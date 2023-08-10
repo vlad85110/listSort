@@ -1,9 +1,5 @@
 package list
 
-import (
-	"fmt"
-)
-
 type ListNode struct {
 	str string
 	next *ListNode
@@ -142,7 +138,7 @@ func (l *List) Sort() {
 			}
 
 			if jPrev.mutex.IsLocked() {
-				safeUnlock(jPrev.mutex)
+				jPrev.mutex.Unlock()
 			}
 		}
 
@@ -156,16 +152,6 @@ func (l *List) Sort() {
 	}
 
 	iEl.mutex.Unlock()
-}
-
-func safeUnlock(mu *MyMutex) {
-	defer func() {
-		if r := recover(); r != nil {
-			fmt.Println("Recovered from panic:", r)
-		}
-	}()
-
-	mu.Unlock()
 }
 
 
