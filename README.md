@@ -37,4 +37,5 @@ During program execution, you can interactively add strings to the list:
 
 ## Note
 
+
 - If you don't provide the number of threads when running, the program will display a usage message.
